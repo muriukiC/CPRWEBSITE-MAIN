@@ -1,0 +1,442 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================================
+   Global base — built on tokens.css
+   Mobile-first. Every default targets a 360-375px viewport and only
+   scales up at md/lg breakpoints.
+   ===================================================================== */
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Smooth scroll only when motion is allowed (handled in tokens.css) */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink-900);
+    font-family: theme('fontFamily.sans');
+    font-size: var(--step-0);
+    line-height: var(--leading-body);
+    font-feature-settings: 'kern', 'liga';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    /* Prevent horizontal jitter on mobile */
+    position: relative;
+    width: 100%;
+  }
+
+  /* Headings — Newsreader, tight leading, balanced wrapping */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme('fontFamily.display');
+    line-height: var(--leading-tight);
+    color: var(--ink-900);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: var(--step-5);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: var(--step-3);
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: var(--step-2);
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: var(--step-0);
+    font-weight: 600;
+  }
+
+  h6 {
+    font-size: var(--step--1);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Long-form prose */
+  p {
+    margin: 0;
+    max-width: var(--measure);
+    hyphens: auto;
+  }
+
+  a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    background-image: linear-gradient(var(--accent-primary), var(--accent-primary));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 0.3s var(--ease-soft);
+    padding-bottom: 2px;
+  }
+
+  a:hover {
+    background-size: 100% 2px;
+  }
+
+  /* Exceptions for navigation tabs and buttons where we don't want the underline effect */
+  li a,
+  nav a,
+  .no-underline {
+    background-image: none !important;
+  }
+
+  /* Focus ring — high-contrast, visible everywhere */
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: var(--r-1);
+  }
+
+  /* Tabular numerics in tables */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Images never overflow their box */
+  img,
+  video,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Form controls inherit family */
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  /* Tap targets: ≥44x44 CSS px (mobile-first commitment) */
+  button,
+  [role='button'],
+  a {
+    min-height: 0;
+    /* don't force it on inline links */
+  }
+
+  .tap-target,
+  button.tap-target,
+  a.tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Skip-link styling — invisible until focused */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: var(--sp-4);
+    background: var(--ink-900);
+    color: var(--paper);
+    padding: var(--sp-3) var(--sp-5);
+    border-radius: var(--r-1);
+    z-index: 100;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    top: var(--sp-3);
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--accent-secondary);
+    color: var(--ink-900);
+  }
+}
+
+@layer components {
+
+  /* Container — mobile-first padding scales up */
+  .container-prose {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--sp-5);
+  }
+
+  @media (min-width: 768px) {
+    .container-prose {
+      padding-inline: var(--sp-6);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-prose {
+      padding-inline: var(--sp-7);
+    }
+  }
+
+  /* Enhanced prose styling */
+  .prose-ink {
+    color: var(--ink-700);
+    line-height: var(--leading-body);
+  }
+
+  .prose-ink h2 {
+    color: var(--ink-900);
+    font-size: var(--step-2);
+    font-weight: 600;
+    margin-bottom: var(--sp-4);
+  }
+
+  .prose-ink h3 {
+    color: var(--ink-900);
+    font-size: var(--step-1);
+    font-weight: 600;
+    margin-bottom: var(--sp-3);
+  }
+
+  .prose-ink p {
+    margin-bottom: var(--sp-4);
+    max-width: var(--measure);
+  }
+
+  .prose-ink a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s var(--ease-soft);
+  }
+
+  .prose-ink a:hover {
+    color: var(--accent-secondary);
+  }
+
+  /* Enhanced button styling with accessibility */
+  .btn-primary {
+    background: var(--accent-primary);
+    color: var(--paper);
+    padding: var(--sp-3) var(--sp-6);
+    border-radius: var(--r-2);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    transition: all 0.2s var(--ease-soft);
+    border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary:hover {
+    background: color-mix(in srgb, var(--accent-primary) 85%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 21, 56, 0.3);
+    border-color: color-mix(in srgb, var(--accent-primary) 70%, black);
+  }
+
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-secondary), 0 0 0 5px var(--accent-primary);
+  }
+
+  .btn-secondary {
+    background: var(--accent-secondary);
+    color: var(--paper);
+    padding: var(--sp-3) var(--sp-6);
+    border-radius: var(--r-2);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    transition: all 0.2s var(--ease-soft);
+    border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-secondary:hover {
+    background: color-mix(in srgb, var(--accent-secondary) 85%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 136, 63, 0.3);
+    border-color: color-mix(in srgb, var(--accent-secondary) 70%, black);
+  }
+
+  .btn-secondary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-tertiary), 0 0 0 5px var(--accent-secondary);
+  }
+
+  .btn-tertiary {
+    background: var(--accent-tertiary);
+    color: var(--paper);
+    padding: var(--sp-3) var(--sp-6);
+    border-radius: var(--r-2);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    transition: all 0.2s var(--ease-soft);
+    border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-tertiary:hover {
+    background: color-mix(in srgb, var(--accent-tertiary) 85%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(46, 125, 106, 0.3);
+    border-color: color-mix(in srgb, var(--accent-tertiary) 70%, black);
+  }
+
+  .btn-tertiary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-primary), 0 0 0 5px var(--accent-tertiary);
+  }
+
+  /* Card enhancements */
+  .card {
+    background: var(--snow);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--r-2);
+    padding: var(--sp-6);
+    transition: all 0.2s var(--ease-soft);
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 24px rgba(11, 18, 32, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--accent-primary), color-mix(in srgb, var(--accent-primary) 80%, black));
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, var(--accent-secondary), color-mix(in srgb, var(--accent-secondary) 80%, black));
+  }
+
+  .gradient-tertiary {
+    background: linear-gradient(135deg, var(--accent-tertiary), color-mix(in srgb, var(--accent-tertiary) 80%, black));
+  }
+
+  /* Avatar styling */
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 600;
+    color: var(--paper);
+    font-family: theme('fontFamily.display');
+  }
+
+  .avatar-lg {
+    width: 5rem;
+    height: 5rem;
+    font-size: var(--step-2);
+  }
+
+  .avatar-md {
+    width: 4rem;
+    height: 4rem;
+    font-size: var(--step-1);
+  }
+
+  .avatar-sm {
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--step-0);
+  }
+
+  /* Badge styling */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--sp-1) var(--sp-3);
+    border-radius: var(--r-pill);
+    font-size: var(--step--1);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-primary {
+    background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+    color: var(--accent-primary);
+    border: 1px solid color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  }
+
+  .badge-secondary {
+    background: color-mix(in srgb, var(--accent-secondary) 10%, transparent);
+    color: var(--accent-secondary);
+    border: 1px solid color-mix(in srgb, var(--accent-secondary) 20%, transparent);
+  }
+
+  .badge-tertiary {
+    background: color-mix(in srgb, var(--accent-tertiary) 10%, transparent);
+    color: var(--accent-tertiary);
+    border: 1px solid color-mix(in srgb, var(--accent-tertiary) 20%, transparent);
+  }
+
+  .badge-violet {
+    background: color-mix(in srgb, var(--accent-violet) 10%, transparent);
+    color: var(--accent-violet);
+    border: 1px solid color-mix(in srgb, var(--accent-violet) 20%, transparent);
+  }
+
+  .badge-coral {
+    background: color-mix(in srgb, var(--accent-coral) 10%, transparent);
+    color: var(--accent-coral);
+    border: 1px solid color-mix(in srgb, var(--accent-coral) 20%, transparent);
+  }
+
+  .badge-teal {
+    background: color-mix(in srgb, var(--accent-teal) 10%, transparent);
+    color: var(--accent-teal);
+    border: 1px solid color-mix(in srgb, var(--accent-teal) 20%, transparent);
+  }
+
+  .badge-gold {
+    background: color-mix(in srgb, var(--accent-gold) 10%, transparent);
+    color: var(--accent-gold);
+    border: 1px solid color-mix(in srgb, var(--accent-gold) 20%, transparent);
+  }
+}

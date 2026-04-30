@@ -1,0 +1,52 @@
+{
+  "site": {
+    "name": "MKU Centre for Placenta Research",
+    "shortName": "MKU CPR",
+    "tagline": "Discovering, diagnosing and dismantling the diseases of pregnancy."
+  },
+  "nav": {
+    "research": "Research",
+    "people": "People",
+    "publications": "Publications",
+    "news": "News",
+    "community": "Community",
+    "about": "About",
+    "more": "More",
+    "search": "Search",
+    "contact": "Contact",
+    "skipToMain": "Skip to main content"
+  },
+  "footer": {
+    "centre": "Centre",
+    "engage": "Engage",
+    "stayInformed": "Stay informed",
+    "newsletter": "Newsletter",
+    "rss": "RSS",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "terms": "Terms",
+    "accessibility": "Accessibility",
+    "funderBoilerplate": "This work is supported in part by the Wellcome Trust under a Discovery Award (2026–2031). The views expressed are those of the authors and do not necessarily reflect those of Wellcome."
+  },
+  "forms": {
+    "name": "Your name",
+    "email": "Email address",
+    "topic": "Topic",
+    "message": "Message",
+    "send": "Send",
+    "required": "Required",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "search": {
+    "placeholder": "Search the centre",
+    "noResults": "No results match these terms — try fewer words.",
+    "open": "Open search"
+  },
+  "publications": {
+    "filterByYear": "Year",
+    "filterByTheme": "Theme",
+    "filterByType": "Type",
+    "viewDoi": "View DOI",
+    "openAccess": "Open access"
+  }
+}

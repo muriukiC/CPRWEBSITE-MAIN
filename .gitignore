@@ -1,0 +1,36 @@
+# Claude Code session state (not project content)
+.claude/
+
+# Subproject transients (pnpm-managed)
+mku-cpr/node_modules/
+mku-cpr/.pnpm-store/
+mku-cpr/dist/
+mku-cpr/.astro/
+mku-cpr/.cache/
+mku-cpr/.lighthouseci/
+
+# Build output
+dist/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env
+.env
+.env.local
+.env.*.local
+.dev.vars

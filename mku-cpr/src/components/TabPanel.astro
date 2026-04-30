@@ -1,0 +1,20 @@
+---
+interface Props {
+  tabId: string;
+  groupId: string;
+  active?: boolean;
+  class?: string;
+}
+
+const { tabId, groupId, active = false, class: className } = Astro.props;
+---
+
+<div
+  id={`${groupId}-panel-${tabId}`}
+  role="tabpanel"
+  aria-labelledby={`${groupId}-tab-${tabId}`}
+  tabindex={active ? 0 : -1}
+  class={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-r-2 ${active ? '' : 'hidden'} ${className}`}
+>
+  <slot />
+</div>

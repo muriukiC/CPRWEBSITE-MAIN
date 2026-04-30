@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# astro
+dist/
+.astro/
+
+# build
+.cache/
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# os
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# env
+.env
+.env.local
+.env.*.local
+.dev.vars
+
+# lighthouse
+.lighthouseci/
+
+# pagefind output (rebuilt at build time)
+public/_pagefind/
+dist/_pagefind/

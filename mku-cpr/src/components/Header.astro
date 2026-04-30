@@ -1,0 +1,250 @@
+---
+// Enhanced Header with improved styling and active states
+// Uses Astro.url.pathname to derive the active tab with better logic
+
+const { pathname } = Astro.url;
+const normalizedPathname = pathname.replace(/\/$/, "");
+
+const navItems = [
+  { href: "/", label: "Home", icon: "🏠" },
+  { href: "/research/", label: "Research", icon: "🔬" },
+  { href: "/people/", label: "People", icon: "👥" },
+  { href: "/publications/", label: "Publications", icon: "📚" },
+  { href: "/news/", label: "News", icon: "📰" },
+  { href: "/community/", label: "Community", icon: "🤝" },
+  { href: "/about/", label: "About", icon: "ℹ️" },
+  { href: "/contact/", label: "Contact", icon: "📧" },
+];
+
+function isActive(href: string) {
+  // More precise active state logic with trailing slash normalization
+  const cleanPathname = pathname.replace(/\/+$/, "") || "/";
+  const cleanHref = href.replace(/\/+$/, "") || "/";
+  
+  if (cleanHref === "/") {
+    return cleanPathname === "/";
+  }
+  
+  return cleanPathname === cleanHref || cleanPathname.startsWith(cleanHref + "/");
+}
+---
+
+<header class="sticky top-0 z-[1000] bg-white border-b border-ink-100 shadow-sm backdrop-blur-lg" role="banner">
+  <div class="container-prose flex items-center justify-between py-sp-4">
+    <!-- Professional Logo -->
+    <a href="/" class="group flex items-center gap-sp-3 no-underline" aria-label="MKU Centre for Placenta Research — home">
+      <div class="relative">
+        <div class="w-14 h-14 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-xl flex items-center justify-center text-white font-display text-step-2 font-bold shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
+          CP
+        </div>
+        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-accent-tertiary rounded-full border-2 border-white"></div>
+      </div>
+      <div class="text-left">
+        <span class="font-display text-step-1 text-ink-900 font-bold block">MKU CPR</span>
+        <span class="text-step--2 text-ink-500 font-medium hidden sm:block">Centre for Placenta Research</span>
+      </div>
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-1 list-none p-0 m-0">
+        {navItems.map((item, index) => (
+          <li>
+            <a 
+              href={item.href} 
+              class={`group relative px-3 py-2 rounded-lg text-sm font-semibold no-underline transition-all duration-300 tap-target flex items-center gap-2
+                ${isActive(item.href) 
+                  ? [
+                      'bg-gradient-to-r from-accent-primary to-accent-secondary',
+                      'bg-gradient-to-r from-accent-secondary to-accent-tertiary',
+                      'bg-gradient-to-r from-accent-tertiary to-accent-quat',
+                      'bg-gradient-to-r from-accent-quat to-accent-violet',
+                      'bg-gradient-to-r from-accent-violet to-accent-coral',
+                      'bg-gradient-to-r from-accent-coral to-accent-primary'
+                    ][index % 6] + ' text-white shadow-lg transform scale-105' 
+                  : 'text-ink-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
+                }`}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              <!-- Background Gradient for Hover -->
+              <div class={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -z-10
+                ${[
+                  'bg-gradient-to-r from-accent-primary to-accent-secondary',
+                  'bg-gradient-to-r from-accent-secondary to-accent-tertiary',
+                  'bg-gradient-to-r from-accent-tertiary to-accent-quat',
+                  'bg-gradient-to-r from-accent-quat to-accent-violet',
+                  'bg-gradient-to-r from-accent-violet to-accent-coral',
+                  'bg-gradient-to-r from-accent-coral to-accent-primary'
+                ][index % 6]}`}></div>
+              
+              <span class="relative z-10 text-sm transition-all duration-300 group-hover:scale-110">
+                {item.icon}
+              </span>
+              <span class="relative z-10">{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <!-- Professional Actions -->
+    <div class="flex items-center gap-3">
+      <a href="/contact/" class="hidden sm:flex items-center px-4 py-2 bg-gradient-to-r from-accent-primary to-accent-secondary text-white text-sm font-semibold no-underline rounded-lg hover:from-accent-secondary hover:to-accent-tertiary transition-all duration-300 transform hover:scale-105 shadow-lg">
+        Contact
+      </a>
+      
+      <!-- Mobile Menu Toggle Button -->
+      <button 
+        id="mobileToggle"
+        class="lg:hidden p-2 text-ink-600 hover:text-accent-primary hover:bg-ink-50 rounded-lg transition-all duration-300 relative z-[1002]" 
+        aria-label="Toggle navigation menu" 
+        aria-expanded="false" 
+        aria-controls="mobileDrawer"
+      >
+        <div class="w-6 h-6 flex flex-col justify-center gap-1.5 overflow-hidden">
+          <span class="w-full h-0.5 bg-current transition-all duration-300 transform line-top"></span>
+          <span class="w-full h-0.5 bg-current transition-all duration-300 transform line-mid"></span>
+          <span class="w-full h-0.5 bg-current transition-all duration-300 transform line-bot"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Overlay -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-ink-900/40 backdrop-blur-sm z-[1000] opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden line-top-0"></div>
+
+  <!-- Mobile Side Drawer -->
+  <div 
+    id="mobileDrawer" 
+    class="fixed top-0 right-0 bottom-0 w-[min(85vw,400px)] bg-white z-[1001] translate-x-full transition-transform duration-500 ease-out lg:hidden flex flex-col shadow-2xl"
+    role="navigation" 
+    aria-label="Mobile navigation"
+  >
+    <div class="flex items-center justify-between p-sp-6 border-b border-ink-100">
+      <span class="font-display font-bold text-ink-900">Navigation</span>
+    </div>
+    
+    <div class="flex-1 overflow-y-auto px-sp-4 py-sp-6 overscroll-contain">
+      <ul class="flex flex-col gap-3 list-none p-0 m-0">
+        {navItems.map((item, index) => (
+          <li>
+            <a 
+              href={item.href} 
+              class={`group relative z-10 flex items-center gap-4 px-sp-5 py-sp-4 rounded-xl text-step-0 font-semibold no-underline transition-all duration-300
+                ${isActive(item.href) 
+                  ? [
+                      'bg-gradient-to-r from-accent-primary to-accent-secondary',
+                      'bg-gradient-to-r from-accent-secondary to-accent-tertiary',
+                      'bg-gradient-to-r from-accent-tertiary to-accent-quat',
+                      'bg-gradient-to-r from-accent-quat to-accent-violet',
+                      'bg-gradient-to-r from-accent-violet to-accent-coral',
+                      'bg-gradient-to-r from-accent-coral to-accent-primary'
+                    ][index % 6] + ' text-white shadow-lg' 
+                  : 'text-ink-700 hover:text-white'
+                }`}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              <!-- Background Gradient for Hover -->
+              <div class={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl -z-10
+                ${[
+                  'bg-gradient-to-r from-accent-primary to-accent-secondary',
+                  'bg-gradient-to-r from-accent-secondary to-accent-tertiary',
+                  'bg-gradient-to-r from-accent-tertiary to-accent-quat',
+                  'bg-gradient-to-r from-accent-quat to-accent-violet',
+                  'bg-gradient-to-r from-accent-violet to-accent-coral',
+                  'bg-gradient-to-r from-accent-coral to-accent-primary'
+                ][index % 6]}`}></div>
+              
+              <span class="text-step-1 transition-transform group-hover:scale-125 relative z-10">
+                {item.icon}
+              </span>
+              <span class="relative z-10">{item.label}</span>
+              
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0 relative z-10">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+      
+      <div class="mt-8 pt-8 border-t border-ink-100">
+        <a href="/contact/" class="w-full flex items-center justify-center gap-2 px-sp-6 py-sp-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-bold no-underline rounded-xl hover:shadow-xl transition-all duration-300">
+          <span>Get in Touch</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-pulse">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Drawer Button Animation */
+    .btn-active .line-top {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .btn-active .line-mid {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    .btn-active .line-bot {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Reveal state */
+    .drawer-open #mobileDrawer {
+      transform: translateX(0);
+    }
+    .drawer-open #drawerOverlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+
+  <script is:inline>
+    (function() {
+      const toggle = document.getElementById('mobileToggle');
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const body = document.body;
+
+      function toggleDrawer() {
+        const isOpen = body.classList.contains('drawer-open');
+        if (isOpen) {
+          body.classList.remove('drawer-open');
+          toggle.classList.remove('btn-active');
+          toggle.setAttribute('aria-expanded', 'false');
+          body.style.overflow = '';
+        } else {
+          body.classList.add('drawer-open');
+          toggle.classList.add('btn-active');
+          toggle.setAttribute('aria-expanded', 'true');
+          body.style.overflow = 'hidden';
+        }
+      }
+
+      toggle?.addEventListener('click', () => {
+        toggleDrawer();
+      });
+      
+      overlay?.addEventListener('click', toggleDrawer);
+      
+      // Close on escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && body.classList.contains('drawer-open')) {
+          toggleDrawer();
+        }
+      });
+
+      // Handle transitions for smooth behavior
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024 && body.classList.contains('drawer-open')) {
+          toggleDrawer();
+        }
+      });
+    })();
+  </script>
+</header>

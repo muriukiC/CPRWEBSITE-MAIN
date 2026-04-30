@@ -1,0 +1,148 @@
+/* =====================================================================
+   MKU CPR — Design Tokens
+   Implementation of 03-design-system.md §2 (colour), §3.2 (type),
+   §4.1 (spacing), §4.4 (radii). Tailwind references these CSS vars only;
+   never hardcode hex values in components.
+   ===================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------
+     Colour — Professional Neutrals (Clean, Modern)
+     ------------------------------------------------------------------ */
+  --ink-900: #0F172A; /* Deep Navy - Professional text */
+  --ink-700: #1E293B; /* Dark text, headings */
+  --ink-500: #475569; /* Secondary text */
+  --ink-300: #94A3B8; /* Muted text, borders */
+  --ink-100: #E2E8F0; /* Light borders, dividers */
+  --ink-50:  #F8FAFC; /* Subtle backgrounds */
+  --paper:   #FFFFFF; /* Clean white background */
+  --snow:    #FFFFFF; /* Card surfaces */
+
+  /* ------------------------------------------------------------------
+     Colour — Professional Accents (Modern Research Institution)
+     ------------------------------------------------------------------ */
+  --accent-primary:   #1E3A8A; /* Deep Blue - Professional, Trustworthy */
+  --accent-secondary: #DC2626; /* Medical Red - Health, Research */
+  --accent-tertiary:  #059669; /* Emerald - Growth, Health */
+  --accent-quat:      #7C3AED; /* Violet - Innovation, Science */
+  
+  /* Supporting professional colors */
+  --accent-violet:    #7C3AED; /* Deep Violet */
+  --accent-coral:     #F97316; /* Orange - Energy, Action */
+  --accent-teal:      #0891B2; /* Cyan - Technology, Data */
+  --accent-gold:      #CA8A04; /* Gold - Excellence, Achievement */
+  
+  /* Professional Gradients */
+  --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #3730A3 100%);
+  --gradient-secondary: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+  --gradient-tertiary: linear-gradient(135deg, #059669 0%, #10B981 100%);
+  --gradient-hero: linear-gradient(135deg, #1E3A8A 0%, #3730A3 50%, #DC2626 100%);
+  --gradient-subtle: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+
+  /* ------------------------------------------------------------------
+     Colour — Semantic
+     ------------------------------------------------------------------ */
+  --ok:   #1F5E4D;
+  --warn: #B27300;
+  --err:  #9A1E2E;
+  --info: #1F4F87;
+
+  /* ------------------------------------------------------------------
+     Focus ring — high-contrast on all surfaces
+     ------------------------------------------------------------------ */
+  --focus-ring: 0 0 0 3px var(--accent-secondary), 0 0 0 5px var(--ink-900);
+
+  /* ------------------------------------------------------------------
+     Type scale — fluid, mobile-first (§3.2)
+     1.25 ratio at small sizes, opening to 1.333 at display sizes.
+     ------------------------------------------------------------------ */
+  --step--1: clamp(0.79rem, 0.78rem + 0.05vw, 0.83rem);
+  --step-0:  clamp(1.00rem, 0.96rem + 0.20vw, 1.12rem); /* body */
+  --step-1:  clamp(1.25rem, 1.18rem + 0.36vw, 1.50rem);
+  --step-2:  clamp(1.56rem, 1.45rem + 0.59vw, 2.00rem);
+  --step-3:  clamp(1.95rem, 1.77rem + 0.94vw, 2.67rem);
+  --step-4:  clamp(2.44rem, 2.16rem + 1.46vw, 3.55rem);
+  --step-5:  clamp(3.05rem, 2.62rem + 2.21vw, 4.74rem); /* hero only */
+
+  --leading-tight: 1.15;
+  --leading-body: 1.65;
+
+  /* ------------------------------------------------------------------
+     Spacing — T-shirt sizes (§4.1)
+     ------------------------------------------------------------------ */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 40px;
+  --sp-8: 48px;
+  --sp-9: 64px;
+  --sp-10: 96px;
+  --sp-11: 128px;
+  --sp-12: 160px;
+
+  /* ------------------------------------------------------------------
+     Radii (§4.4)
+     ------------------------------------------------------------------ */
+  --r-1: 4px;     /* chips */
+  --r-2: 10px;    /* cards */
+  --r-3: 16px;    /* panels */
+  --r-pill: 999px;
+
+  /* ------------------------------------------------------------------
+     Motion (§7) — gentle, scientific
+     ------------------------------------------------------------------ */
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-soft: 200ms;
+
+  /* ------------------------------------------------------------------
+     Layout
+     ------------------------------------------------------------------ */
+  --container-max: 1180px;
+  --measure: 72ch;
+}
+
+/* --------------------------------------------------------------------
+   Dark mode — triggered by prefers-color-scheme + opt-in via [data-theme="dark"]
+   Only the neutrals flip; accents were chosen to work on both grounds.
+   -------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper:   #0B1220;
+    --snow:    #11192C;
+    --ink-900: #F1ECDF;
+    --ink-700: #D7D0BD;
+    --ink-500: #B7AE99;
+    --ink-300: #5C6885;
+    --ink-100: #2B3656;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper:   #0B1220;
+  --snow:    #11192C;
+  --ink-900: #F1ECDF;
+  --ink-700: #D7D0BD;
+  --ink-500: #B7AE99;
+  --ink-300: #5C6885;
+  --ink-100: #2B3656;
+}
+
+/* --------------------------------------------------------------------
+   Reduced motion — collapse durations to 0 (§7)
+   -------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-soft: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

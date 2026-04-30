@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  audience?: 'scientific' | 'community' | 'funder' | 'media' | 'student';
+  canonical?: string;
+  ogImage?: string;
+}
+
+const { title, description, audience = 'scientific', canonical, ogImage } = Astro.props;
+const siteName = 'MKU Centre for Placenta Research';
+const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en" data-audience={audience}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="MKU CPR News" href="/feed.xml" />
+
+    <!-- Robots: defaults; per-page noindex via <meta name="robots"> in slot -->
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <Header />
+    <main id="main" tabindex="-1" class="fade-in-up">
+      <slot />
+    </main>
+    <Footer />
+
+    <style is:global>
+      .fade-in-up {
+        animation: fadeInUp 0.6s var(--ease-soft) forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+
+    <script>
+      // Global layout scripts (non-header related) can go here
+    </script>
+    
+    <style>
+      /* Global layout styles */
+    </style>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+# NOTE: Google Drive does NOT honor .gdriveignore files. This file documents
+# intent only. To prevent sync churn from these directories, exclude them in
+# the Drive desktop client preferences (Preferences → Folders to sync).
+node_modules/
+dist/
+.astro/
+.cache/
+.pnpm-store/
+.lighthouseci/

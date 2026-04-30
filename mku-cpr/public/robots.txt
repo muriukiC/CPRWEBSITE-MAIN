@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /_dev/
+
+Sitemap: https://www.mku-cpr.ac.ke/sitemap-index.xml

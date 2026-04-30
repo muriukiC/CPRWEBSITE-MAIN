@@ -1,0 +1,426 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Tabs from '../components/Tabs.astro';
+import TabPanel from '../components/TabPanel.astro';
+
+const researchTabs = [
+  { id: 'malaria', label: 'Placental Malaria', active: true },
+  { id: 'syphilis', label: 'Congenital Syphilis' },
+  { id: 'single-cell', label: 'Single Cell Atlas' },
+];
+---
+
+<BaseLayout
+  title="MKU Centre for Placenta Research"
+  description="Africa's first dedicated centre for placental and pregnancy-disease research, hosted at Mount Kenya University and supported by a Wellcome Trust Discovery Award."
+  audience="scientific"
+>
+  <!-- Professional Hero Section -->
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Enhanced Background -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-[url('https://picsum.photos/seed/maternal-health-placenta-research-laboratory-microscope/1920/1080.jpg')] bg-cover bg-center bg-no-repeat"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-accent-primary/90 via-accent-primary/85 to-accent-secondary/90"></div>
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+    </div>
+    
+    <div class="container-prose relative z-10 text-white">
+      <div class="max-w-5xl mx-auto">
+        <div class="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-md text-white text-sm font-semibold rounded-full mb-8 border border-white/30">
+            🔬 Working on Tropical Medicine, Maternal and Newborn Health
+          </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+          Transforming 
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-accent-secondary">
+            Maternal & Newborn
+          </span>
+          <br />
+          Health Through Research
+        </h1>
+        <p class="text-lg sm:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed">
+          Our work on placental malaria tackles one of the most critical challenges in maternal and newborn health. 
+          Using advanced histopathological analysis and biomarker discovery, we decipher the unique molecular mechanisms 
+          of placental infection and develop innovative point-of-care diagnostics for resource-limited settings.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/research/" class="group relative inline-flex items-center px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-accent-primary/90 backdrop-blur-sm text-white text-base sm:text-lg font-bold rounded-xl hover:bg-accent-secondary hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20">
+            <span class="flex items-center">
+              Explore Research
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-3 transition-transform group-hover:translate-x-1">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+          <a href="/about/" class="group relative inline-flex items-center px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-gradient-to-r from-accent-primary to-accent-secondary text-white text-base sm:text-lg font-bold rounded-xl hover:from-accent-secondary hover:to-accent-tertiary transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
+            <span class="flex items-center">
+              Learn More
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-3 transition-transform group-hover:translate-x-1">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 10l5 5 5-5"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Research Focus Section -->
+  <section class="py-20 bg-white">
+    <div class="container-prose">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink-900 mb-4">Transforming Maternal & Newborn Health</h2>
+        <p class="text-xl text-ink-600 max-w-3xl mx-auto">
+          Our research focuses on innovative solutions for the most critical challenges in maternal health
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-accent-primary/5 to-accent-primary/10 border border-accent-primary/20">
+          <div class="w-16 h-16 bg-accent-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
+            🔬
+          </div>
+          <h3 class="text-xl font-bold text-ink-900 mb-4">Placental Malaria Research</h3>
+          <p class="text-ink-600 leading-relaxed">
+            Using advanced histopathological analysis and biomarker discovery to decipher the unique molecular mechanisms of placental infection
+          </p>
+        </div>
+        
+        <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-accent-secondary/5 to-accent-secondary/10 border border-accent-secondary/20">
+          <div class="w-16 h-16 bg-accent-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
+            🧪
+          </div>
+          <h3 class="text-xl font-bold text-ink-900 mb-4">Point-of-Care Diagnostics</h3>
+          <p class="text-ink-600 leading-relaxed">
+            Designing rapid, highly sensitive diagnostic tests tailored for resource-limited settings using CRISPR-based assays and lab-on-a-chip platforms
+          </p>
+        </div>
+        
+        <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-accent-tertiary/5 to-accent-tertiary/10 border border-accent-tertiary/20">
+          <div class="w-16 h-16 bg-accent-tertiary rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
+            🧬
+          </div>
+          <h3 class="text-xl font-bold text-ink-900 mb-4">Genomic Surveillance</h3>
+          <p class="text-ink-600 leading-relaxed">
+            Leveraging next-generation sequencing to unravel genetic diversity and drug resistance profiles driving targeted intervention strategies
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 bg-gradient-to-b from-ink-50 to-white">
+    <div class="container-prose">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-ink-900 mb-4">Our Impact in Numbers</h2>
+        <p class="text-xl text-ink-600 max-w-3xl mx-auto">
+          Transforming maternal health through research, innovation, and community engagement.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-sp-6">
+        <div class="group relative p-sp-8 bg-gradient-to-br from-accent-primary/5 to-accent-primary/10 border border-accent-primary/20 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-primary/10 to-accent-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="text-step-5 font-display text-accent-primary font-bold mb-sp-2">47</div>
+            <div class="text-step-0 text-ink-700 font-medium">Publications</div>
+            <div class="mt-sp-3 text-accent-primary text-step--1">Peer-reviewed papers</div>
+          </div>
+        </div>
+        
+        <div class="group relative p-sp-8 bg-gradient-to-br from-accent-secondary/5 to-accent-secondary/10 border border-accent-secondary/20 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-secondary/10 to-accent-secondary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="text-step-5 font-display text-accent-secondary font-bold mb-sp-2">15K+</div>
+            <div class="text-step-0 text-ink-700 font-medium">Lives Impacted</div>
+            <div class="mt-sp-3 text-accent-secondary text-step--1">Across Kenya</div>
+          </div>
+        </div>
+        
+        <div class="group relative p-sp-8 bg-gradient-to-br from-accent-tertiary/5 to-accent-tertiary/10 border border-accent-tertiary/20 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-tertiary/10 to-accent-tertiary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="text-step-5 font-display text-accent-tertiary font-bold mb-sp-2">50+</div>
+            <div class="text-step-0 text-ink-700 font-medium">Communities</div>
+            <div class="mt-sp-3 text-accent-tertiary text-step--1">Partner communities</div>
+          </div>
+        </div>
+        
+        <div class="group relative p-sp-8 bg-gradient-to-br from-accent-gold/5 to-accent-gold/10 border border-accent-gold/20 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent-gold/10 to-accent-gold/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10">
+            <div class="text-step-5 font-display text-accent-gold font-bold mb-sp-2">2024</div>
+            <div class="text-step-0 text-ink-700 font-medium">Founded</div>
+            <div class="mt-sp-3 text-accent-gold text-step--1">Leading innovation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Focus Section with Visual Elements -->
+  <section class="relative py-sp-20 bg-gradient-to-b from-paper to-ink-50 overflow-hidden">
+    <!-- Background Decoration -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-accent-violet/5 to-accent-teal/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-br from-accent-coral/5 to-accent-gold/5 rounded-full blur-2xl"></div>
+    
+    <div class="container-prose relative z-10">
+      <div class="text-center mb-sp-16">
+        <h2 class="text-step-3 font-display text-ink-900 mb-sp-4">Current Research Focus</h2>
+        <p class="text-step-1 text-ink-700 max-w-prose mx-auto">
+          Our research tackles the most pressing challenges in maternal health across Africa through innovative approaches and cutting-edge technology.
+        </p>
+      </div>
+      
+      <Tabs tabs={researchTabs} id="home-research">
+        <TabPanel groupId="home-research" tabId="malaria" active>
+          <div class="bg-gradient-to-br from-paper to-accent-primary/5 border border-accent-primary/20 rounded-2xl p-sp-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-sp-8">
+              <div class="space-y-sp-6">
+                <div class="flex items-center gap-sp-4">
+                  <div class="w-20 h-20 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-2xl flex items-center justify-center text-paper text-step-2 font-display shadow-lg">
+                    M
+                  </div>
+                  <div>
+                    <h3 class="text-step-2 font-display text-ink-900">Placental Malaria</h3>
+                    <p class="text-accent-primary font-medium">Leading Research Focus</p>
+                  </div>
+                </div>
+                <p class="text-step-1 text-ink-700 leading-relaxed">
+                  Mapping infection at the cellular level to understand how malaria parasites interact with placental tissue, 
+                  developing targeted interventions to protect mother and baby through cutting-edge molecular research.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-sp-4">
+                  <div class="bg-gradient-to-br from-accent-primary/10 to-accent-primary/5 border border-accent-primary/20 rounded-xl p-sp-4 hover:shadow-md transition-shadow">
+                    <div class="w-8 h-8 bg-accent-primary rounded-lg flex items-center justify-center text-paper text-step--2 font-bold mb-sp-2">🔬</div>
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Cellular Mapping</h4>
+                    <p class="text-step--1 text-ink-700">Single-cell analysis</p>
+                  </div>
+                  <div class="bg-gradient-to-br from-accent-primary/10 to-accent-primary/5 border border-accent-primary/20 rounded-xl p-sp-4 hover:shadow-md transition-shadow">
+                    <div class="w-8 h-8 bg-accent-primary rounded-lg flex items-center justify-center text-paper text-step--2 font-bold mb-sp-2">🧬</div>
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Biomarker Discovery</h4>
+                    <p class="text-step--1 text-ink-700">Early detection</p>
+                  </div>
+                  <div class="bg-gradient-to-br from-accent-primary/10 to-accent-primary/5 border border-accent-primary/20 rounded-xl p-sp-4 hover:shadow-md transition-shadow">
+                    <div class="w-8 h-8 bg-accent-primary rounded-lg flex items-center justify-center text-paper text-step--2 font-bold mb-sp-2">💊</div>
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Therapeutic Targets</h4>
+                    <p class="text-step--1 text-ink-700">Novel interventions</p>
+                  </div>
+                </div>
+                <a href="/research/" class="btn-primary">
+                  Learn more about our malaria research
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="relative">
+                <div class="aspect-square bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 rounded-2xl overflow-hidden">
+                  <div class="absolute inset-0 bg-[url('https://picsum.photos/seed/malaria-research-microscope/600/600.jpg')] bg-cover bg-center opacity-60"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-accent-primary/30 to-transparent"></div>
+                  <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-sp-4">
+                    <p class="text-step-0 text-ink-900 font-semibold">Advanced Microscopy</p>
+                    <p class="text-step--1 text-ink-700">State-of-the-art imaging facilities</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </TabPanel>
+        
+        <TabPanel groupId="home-research" tabId="syphilis">
+          <div class="bg-paper border border-ink-100 rounded-lg p-sp-8 shadow-sm">
+            <div class="flex items-start gap-sp-6">
+              <div class="w-16 h-16 bg-accent-secondary rounded-full flex items-center justify-center text-paper text-step-2 font-display flex-shrink-0">
+                S
+              </div>
+              <div class="flex-1">
+                <h3 class="text-step-2 font-display text-ink-900 mb-sp-4">Congenital Syphilis</h3>
+                <p class="text-step-1 text-ink-700 mb-sp-6">
+                  Developing rapid, field-deployable diagnostics for congenital syphilis to ensure early intervention 
+                  and prevent adverse outcomes in resource-limited settings.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-sp-4 mb-sp-6">
+                  <div class="bg-accent-secondary/5 border border-accent-secondary/20 rounded-lg p-sp-4">
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Point-of-Care</h4>
+                    <p class="text-step--1 text-ink-700">Rapid diagnostic devices for field use</p>
+                  </div>
+                  <div class="bg-accent-secondary/5 border border-accent-secondary/20 rounded-lg p-sp-4">
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Mobile Integration</h4>
+                    <p class="text-step--1 text-ink-700">Digital health solutions</p>
+                  </div>
+                  <div class="bg-accent-secondary/5 border border-accent-secondary/20 rounded-lg p-sp-4">
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Community Screening</h4>
+                    <p class="text-step--1 text-ink-700">Outreach programs</p>
+                  </div>
+                </div>
+                <a href="/research/" class="btn-secondary">
+                  Learn more about diagnostics
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </TabPanel>
+        
+        <TabPanel groupId="home-research" tabId="single-cell">
+          <div class="bg-paper border border-ink-100 rounded-lg p-sp-8 shadow-sm">
+            <div class="flex items-start gap-sp-6">
+              <div class="w-16 h-16 bg-accent-tertiary rounded-full flex items-center justify-center text-paper text-step-2 font-display flex-shrink-0">
+                SC
+              </div>
+              <div class="flex-1">
+                <h3 class="text-step-2 font-display text-ink-900 mb-sp-4">Single Cell Atlas</h3>
+                <p class="text-step-1 text-ink-700 mb-sp-6">
+                  Building the first comprehensive single-cell atlas of the sub-Saharan African placenta, 
+                  creating an invaluable resource for researchers worldwide.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-sp-4 mb-sp-6">
+                  <div class="bg-accent-tertiary/5 border border-accent-tertiary/20 rounded-lg p-sp-4">
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Cell Type Mapping</h4>
+                    <p class="text-step--1 text-ink-700">Comprehensive cellular atlas</p>
+                  </div>
+                  <div class="bg-accent-tertiary/5 border border-accent-tertiary/20 rounded-lg p-sp-4">
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Gene Expression</h4>
+                    <p class="text-step--1 text-ink-700">Molecular profiling</p>
+                  </div>
+                  <div class="bg-accent-tertiary/5 border border-accent-tertiary/20 rounded-lg p-sp-4">
+                    <h4 class="text-step-0 font-semibold text-ink-900 mb-sp-2">Disease Comparison</h4>
+                    <p class="text-step--1 text-ink-700">Health vs disease states</p>
+                  </div>
+                </div>
+                <a href="/research/" class="inline-flex items-center px-sp-6 py-sp-3 bg-accent-tertiary text-paper rounded-lg font-semibold hover:bg-accent-tertiary/90 transition-colors">
+                  Explore the atlas
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-sp-2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </TabPanel>
+      </Tabs>
+    </div>
+  </section>
+
+  <!-- News & Updates -->
+  <section class="py-sp-16 bg-paper">
+    <div class="container-prose">
+      <div class="text-center mb-sp-12">
+        <h2 class="text-step-3 font-display text-ink-900 mb-sp-4">Latest Updates</h2>
+        <p class="text-step-1 text-ink-700 max-w-prose mx-auto">
+          Stay informed about our latest research breakthroughs and center developments.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-sp-8">
+        <article class="bg-gradient-to-br from-accent-primary/5 to-accent-primary/10 border border-accent-primary/20 rounded-lg p-sp-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center gap-sp-2 mb-sp-3">
+            <span class="badge badge-primary">Featured</span>
+            <time class="text-step--1 text-ink-500">Oct 15, 2024</time>
+          </div>
+          <h3 class="text-step-1 font-semibold text-ink-900 mb-sp-3">
+            Major breakthrough in placental malaria research
+          </h3>
+          <p class="text-step-0 text-ink-700 mb-sp-4">
+            Our team's groundbreaking study published in Nature Medicine marks a significant milestone in understanding placental malaria.
+          </p>
+          <a href="/news/" class="text-accent-primary font-semibold hover:text-accent-primary/80">
+            Read more →
+          </a>
+        </article>
+        
+        <article class="bg-gradient-to-br from-accent-secondary/5 to-accent-secondary/10 border border-accent-secondary/20 rounded-lg p-sp-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center gap-sp-2 mb-sp-3">
+            <span class="badge badge-secondary">Funding</span>
+            <time class="text-step--1 text-ink-500">Oct 1, 2024</time>
+          </div>
+          <h3 class="text-step-1 font-semibold text-ink-900 mb-sp-3">
+            Wellcome Trust extends funding for diagnostics
+          </h3>
+          <p class="text-step-0 text-ink-700 mb-sp-4">
+            Additional £2.5M funding secured to advance our point-of-care diagnostic devices for congenital syphilis.
+          </p>
+          <a href="/news/" class="text-accent-secondary font-semibold hover:text-accent-secondary/80">
+            Read more →
+          </a>
+        </article>
+        
+        <article class="bg-gradient-to-br from-accent-tertiary/5 to-accent-tertiary/10 border border-accent-tertiary/20 rounded-lg p-sp-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center gap-sp-2 mb-sp-3">
+            <span class="badge badge-tertiary">Conference</span>
+            <time class="text-step--1 text-ink-500">Sep 15, 2024</time>
+          </div>
+          <h3 class="text-step-1 font-semibold text-ink-900 mb-sp-3">
+            International Placental Research Conference
+          </h3>
+          <p class="text-step-0 text-ink-700 mb-sp-4">
+            Over 200 researchers from 30 countries gathered at MKU for our annual conference on placental research.
+          </p>
+          <a href="/news/" class="text-accent-tertiary font-semibold hover:text-accent-tertiary/80">
+            Read more →
+          </a>
+        </article>
+      </div>
+      
+      <div class="text-center mt-sp-8">
+        <a href="/news/" class="btn-primary">
+          View All News
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-sp-16 bg-gradient-to-r from-accent-primary to-accent-secondary text-paper">
+    <div class="container-prose text-center">
+      <h2 class="text-step-3 font-display mb-sp-4">Join Us in Transforming Maternal Health</h2>
+      <p class="text-step-1 mb-sp-8 max-w-prose mx-auto">
+        Whether you're a researcher, healthcare professional, or community member, there are many ways to contribute to our mission.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-sp-4 justify-center">
+        <a href="/community/" class="inline-flex items-center px-sp-6 py-sp-3 bg-paper text-accent-primary rounded-lg font-semibold hover:bg-ink-100 transition-colors">
+          Get Involved
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-sp-2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </a>
+        <a href="/contact/" class="inline-flex items-center px-sp-6 py-sp-3 bg-transparent border-2 border-paper text-paper rounded-lg font-semibold hover:bg-paper hover:text-accent-primary transition-colors">
+          Contact Us
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-sp-2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -8,6 +8,8 @@ const researchTabs = [
   { id: 'syphilis', label: 'Congenital Syphilis' },
   { id: 'single-cell', label: 'Single Cell Atlas' },
 ];
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
@@ -50,7 +52,7 @@ const researchTabs = [
           of placental infection and develop innovative point-of-care diagnostics for resource-limited settings.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
-          <a href="/research/" class="group relative inline-flex items-center px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-accent-primary/90 backdrop-blur-sm text-white text-base sm:text-lg font-bold rounded-xl hover:bg-accent-secondary hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20">
+          <a href={`${base}research/`} class="group relative inline-flex items-center px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-accent-primary/90 backdrop-blur-sm text-white text-base sm:text-lg font-bold rounded-xl hover:bg-accent-secondary hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20">
             <span class="flex items-center">
               Explore Research
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-3 transition-transform group-hover:translate-x-1">
@@ -59,7 +61,7 @@ const researchTabs = [
               </svg>
             </span>
           </a>
-          <a href="/about/" class="group relative inline-flex items-center px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-gradient-to-r from-accent-primary to-accent-secondary text-white text-base sm:text-lg font-bold rounded-xl hover:from-accent-secondary hover:to-accent-tertiary transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
+          <a href={`${base}about/`} class="group relative inline-flex items-center px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-gradient-to-r from-accent-primary to-accent-secondary text-white text-base sm:text-lg font-bold rounded-xl hover:from-accent-secondary hover:to-accent-tertiary transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
             <span class="flex items-center">
               Learn More
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-3 transition-transform group-hover:translate-x-1">
@@ -223,7 +225,7 @@ const researchTabs = [
                     <p class="text-step--1 text-ink-700">Novel interventions</p>
                   </div>
                 </div>
-                <a href="/research/" class="btn-primary">
+                <a href={`${base}research/`} class="btn-primary">
                   Learn more about our malaria research
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -271,7 +273,7 @@ const researchTabs = [
                     <p class="text-step--1 text-ink-700">Outreach programs</p>
                   </div>
                 </div>
-                <a href="/research/" class="btn-secondary">
+                <a href={`${base}research/`} class="btn-secondary">
                   Learn more about diagnostics
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -309,7 +311,7 @@ const researchTabs = [
                     <p class="text-step--1 text-ink-700">Health vs disease states</p>
                   </div>
                 </div>
-                <a href="/research/" class="inline-flex items-center px-sp-6 py-sp-3 bg-accent-tertiary text-paper rounded-lg font-semibold hover:bg-accent-tertiary/90 transition-colors">
+                <a href={`${base}research/`} class="inline-flex items-center px-sp-6 py-sp-3 bg-accent-tertiary text-paper rounded-lg font-semibold hover:bg-accent-tertiary/90 transition-colors">
                   Explore the atlas
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-sp-2">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -346,7 +348,7 @@ const researchTabs = [
           <p class="text-step-0 text-ink-700 mb-sp-4">
             Our team's groundbreaking study published in Nature Medicine marks a significant milestone in understanding placental malaria.
           </p>
-          <a href="/news/" class="text-accent-primary font-semibold hover:text-accent-primary/80">
+          <a href={`${base}news/`} class="text-accent-primary font-semibold hover:text-accent-primary/80">
             Read more →
           </a>
         </article>
@@ -362,7 +364,7 @@ const researchTabs = [
           <p class="text-step-0 text-ink-700 mb-sp-4">
             Additional £2.5M funding secured to advance our point-of-care diagnostic devices for congenital syphilis.
           </p>
-          <a href="/news/" class="text-accent-secondary font-semibold hover:text-accent-secondary/80">
+          <a href={`${base}news/`} class="text-accent-secondary font-semibold hover:text-accent-secondary/80">
             Read more →
           </a>
         </article>
@@ -378,14 +380,14 @@ const researchTabs = [
           <p class="text-step-0 text-ink-700 mb-sp-4">
             Over 200 researchers from 30 countries gathered at MKU for our annual conference on placental research.
           </p>
-          <a href="/news/" class="text-accent-tertiary font-semibold hover:text-accent-tertiary/80">
+          <a href={`${base}news/`} class="text-accent-tertiary font-semibold hover:text-accent-tertiary/80">
             Read more →
           </a>
         </article>
       </div>
       
       <div class="text-center mt-sp-8">
-        <a href="/news/" class="btn-primary">
+        <a href={`${base}news/`} class="btn-primary">
           View All News
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -404,7 +406,7 @@ const researchTabs = [
         Whether you're a researcher, healthcare professional, or community member, there are many ways to contribute to our mission.
       </p>
       <div class="flex flex-col sm:flex-row gap-sp-4 justify-center">
-        <a href="/community/" class="inline-flex items-center px-sp-6 py-sp-3 bg-paper text-accent-primary rounded-lg font-semibold hover:bg-ink-100 transition-colors">
+        <a href={`${base}community/`} class="inline-flex items-center px-sp-6 py-sp-3 bg-paper text-accent-primary rounded-lg font-semibold hover:bg-ink-100 transition-colors">
           Get Involved
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-sp-2">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -413,7 +415,7 @@ const researchTabs = [
             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
           </svg>
         </a>
-        <a href="/contact/" class="inline-flex items-center px-sp-6 py-sp-3 bg-transparent border-2 border-paper text-paper rounded-lg font-semibold hover:bg-paper hover:text-accent-primary transition-colors">
+        <a href={`${base}contact/`} class="inline-flex items-center px-sp-6 py-sp-3 bg-transparent border-2 border-paper text-paper rounded-lg font-semibold hover:bg-paper hover:text-accent-primary transition-colors">
           Contact Us
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-sp-2">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>

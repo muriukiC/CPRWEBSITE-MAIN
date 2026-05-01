@@ -2,6 +2,7 @@
 // Enhanced Footer with improved styling and functionality
 // Per CLAUDE.md §4.4: Wellcome funder boilerplate appears in every footer.
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="relative bg-slate-900 text-white overflow-hidden" role="contentinfo">
@@ -68,27 +69,27 @@ const year = new Date().getFullYear();
           Navigation
         </h3>
         <ul class="space-y-3">
-          <li><a href="/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-primary transition-colors"></span>
             Home
           </a></li>
-          <li><a href="/about/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}about/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-primary transition-colors"></span>
             About
           </a></li>
-          <li><a href="/research/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}research/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-primary transition-colors"></span>
             Research
           </a></li>
-          <li><a href="/people/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}people/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-primary transition-colors"></span>
             People
           </a></li>
-          <li><a href="/publications/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}publications/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-primary transition-colors"></span>
             Publications
           </a></li>
-          <li><a href="/news/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}news/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-primary transition-colors"></span>
             News
           </a></li>
@@ -102,23 +103,23 @@ const year = new Date().getFullYear();
           Engage
         </h3>
         <ul class="space-y-3">
-          <li><a href="/community/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}community/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-secondary transition-colors"></span>
             Community
           </a></li>
-          <li><a href="/careers/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}careers/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-secondary transition-colors"></span>
             Careers
           </a></li>
-          <li><a href="/partners/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}partners/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-secondary transition-colors"></span>
             Partners
           </a></li>
-          <li><a href="/contact/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}contact/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-secondary transition-colors"></span>
             Contact
           </a></li>
-          <li><a href="/donate/" class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
+          <li><a href={`${base}donate/`} class="text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group">
             <span class="w-1 h-1 bg-slate-600 rounded-full group-hover:bg-accent-secondary transition-colors"></span>
             Donate
           </a></li>
@@ -244,10 +245,10 @@ const year = new Date().getFullYear();
           © {year} MKU Centre for Placenta Research. All rights reserved.
         </div>
         <div class="flex flex-wrap gap-6">
-          <a href="/privacy/" class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Privacy Policy</a>
-          <a href="/cookie-policy/" class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Cookie Policy</a>
-          <a href="/terms/" class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Terms of Use</a>
-          <a href="/accessibility-statement/" class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Accessibility</a>
+          <a href={`${base}privacy/`} class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Privacy Policy</a>
+          <a href={`${base}cookie-policy/`} class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Cookie Policy</a>
+          <a href={`${base}terms/`} class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Terms of Use</a>
+          <a href={`${base}accessibility-statement/`} class="text-slate-400 hover:text-white transition-colors duration-200 text-sm">Accessibility</a>
         </div>
       </div>
     </div>
